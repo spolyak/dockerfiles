@@ -44,22 +44,22 @@ RUN apt-get -y install unzip
 # Create /mnt/packs directory
 RUN mkdir -p /mnt/packs
 # Copy WSO2 product zip into /mnt/packs
-ADD dist/wso2am-1.6.0.zip /mnt/packs/
+ADD dist/wso2am-1.7.0.zip /mnt/packs/
 # eg :-
 # ADD dist/<WSO2 product zip> /mnt/packs/
 
 # Unzip WSO2 product
-RUN unzip -q /mnt/packs/wso2am-1.6.0.zip -d /mnt/
+RUN unzip -q /mnt/packs/wso2am-1.7.0.zip -d /mnt/
 # eg :-
 # RUN unzip -q /mnt/packs/<WSO2 product zip> -d /mnt/
 
 # Copy Oracle JDK into /opt directory
-ADD dist/jdk-7u55-linux-x64.tar.gz /opt/
+ADD dist/jdk-7u67-linux-x64.tar.gz /opt/
 # eg :-
 # ADD dist/<Latest Oracle JDK tar> /opt/
 
 # Create symlink to JDK as /opt/java
-RUN ln -s /opt/jdk1.7.0_55 /opt/java
+RUN ln -s /opt/jdk1.7.0_67 /opt/java
 # eg :-
 # RUN ln -s /opt/<JDK decompressed directory name> /opt/java
 
@@ -69,5 +69,5 @@ ENV PATH /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
 ENV JAVA_HOME /opt/java
 
 WORKDIR /root
-
-CMD /mnt/wso2am-1.6.0/bin/wso2server.sh
+EXPOSE 9763
+CMD /mnt/wso2am-1.7.0/bin/wso2server.sh

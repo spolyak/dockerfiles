@@ -8,7 +8,7 @@ Build a Docker container
 
 Get a git clone of the build repository.
 
-    git clone https://github.com/thilinapiy/dockerfiles(https://github.com/thilinapiy/dockerfiles)
+    git clone [https://github.com/spolyak/dockerfiles](https://github.com/spolyak/dockerfiles)
         
 Download [Oracle JDK 7](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html) tar.gz (not JDK 8) and place it in '/dockerfiles/base/dist/'
 
@@ -34,9 +34,11 @@ Start a Docker container
 
 Start in interactive mode
 
-    docker run -i -t --name apim_test apim_image 
+    docker run -i -p 9763 -t --name apim_test apim_image 
         
 Start in daemon mode
 
     docker run -d    --name apim_test apim_image 
 
+NOTE: all of the ports need to be both exposed in the Dockerfile and then published when we run, e.g. -P or -p 9763
+NOTE: if using boot2docker you will need to find the ip (boot2docker ip) to test the implemenation. See the docker ps for ip mapping.
